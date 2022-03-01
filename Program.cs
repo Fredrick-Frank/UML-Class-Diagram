@@ -7,7 +7,7 @@ namespace ConsoleAp
     {
         static void Main()
         {
-            IList<Student> studentList = new List<Student>()
+            IList<Student> studentList = new List<Student>() //this is the anonymous type
             {
               new Student(){StudentID = 1, StudentName = "John", age = 28},
               new Student(){StudentID = 2, StudentName = "Henry", age = 18},
@@ -16,22 +16,18 @@ namespace ConsoleAp
               new Student(){StudentID= 5, StudentName = "Joe", age = 25}
             };
 
-            var students = from s in studentList
+            var students = from s in studentList //using the LINQ syntax
                            select new { Id = s.StudentID, Name = s.StudentName, Age = s.age};
 
             foreach (var stud in students)
                 Console.WriteLine(stud.Id + "_" + stud.Name);
-            Console.WriteLine(myDynamicVar.GetType());
         }
 
-        public class Student // creating a class with a property
+        public class Student // creating a class Student with a property (StudenrID, StudentName & age)
         {
             public int StudentID { get ; set; }
             public string  StudentName { get; set; }
             public int age { get; set; }
         }
-
-        dynamic myDynamicVar = 1;
-       
     }
 }
